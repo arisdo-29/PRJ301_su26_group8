@@ -1,12 +1,5 @@
 -- ============================================================
---  AutoWash Pro  –  Database Schema  v4.0
---  SQL Server (T-SQL)
---  Thay đổi so với v3.0:
---    + Gộp bảng admins + customers thành 1 bảng users (Cách C)
---      users: id, login_id, password_hash, role, full_name, email
---      → 1 bảng lo hết mọi thứ: login, phân quyền, profile
---      → Login chỉ cần query 1 bảng, không JOIN, không 2 lần query
---      → Tạo JWT { user_id, role } đơn giản, nhanh
+--  AutoWash Pro  –  Database Schema  
 -- ============================================================
 --  Constraints: PK · FK · UNIQUE only
 --  Business validation → handled by application layer (BE)
@@ -84,13 +77,13 @@ GO
 --
 --  Luồng login (POST /api/auth/login):
 --    1. Query users theo login_id → lấy role + full_name + email trong 1 query
---    2. Verify password_hash
+--    2. Verify password
 --    3. Tạo JWT { user_id, role } → xong
 -- ============================================================
 CREATE TABLE users (
     id            INT            NOT NULL IDENTITY(1,1) PRIMARY KEY,
     login_id      NVARCHAR(100)  NOT NULL UNIQUE,   -- phone hoặc username
-    password_hash NVARCHAR(255)  NOT NULL,
+    password      NVARCHAR(100)  NOT NULL,
     role          NVARCHAR(20)   NOT NULL DEFAULT 'CUSTOMER',
     full_name     NVARCHAR(100)  NOT NULL,
     email         NVARCHAR(100)  NULL     UNIQUE,
@@ -324,15 +317,14 @@ VALUES
     ('Platinum', 30, 15000000,  1.30, 14, 0, 1, 4);
 GO
 
--- Users mặc định (thay password_hash trước khi deploy)
+
 -- Admin: login bằng username
 -- Customer: login bằng số điện thoại
-INSERT INTO users (login_id, password_hash, role, full_name, email)
+INSERT INTO users (login_id, password, role, full_name, email)
 VALUES
-    ('superadmin',  '$2b$12$REPLACE_WITH_REAL_BCRYPT_HASH', 'SUPER_ADMIN', N'System Administrator', NULL),
-    ('manager01',   '$2b$12$REPLACE_WITH_REAL_BCRYPT_HASH', 'MANAGER',     N'Nguyễn Văn Quản Lý',   NULL),
-    ('0901234567',  '$2b$12$REPLACE_WITH_REAL_BCRYPT_HASH', 'CUSTOMER',    N'Trần Thị Khách Hàng',  'khachhang@email.com');
-GO
+    ('superadmin', '123456', 'SUPER_ADMIN', N'System Administrator', NULL),
+    ('manager01', '123456', 'MANAGER', N'Nguyễn Văn Quản Lý', NULL),
+    ('0901234567', '123456', 'CUSTOMER', N'Trần Thị Khách Hàng', 'khachhang@email.com');
 
 -- Dịch vụ mẫu
 INSERT INTO services (name, description, price, duration_min)
@@ -353,21 +345,22 @@ GO
 --   admin     → username       (VD: "superadmin")
 --
 -- Luồng login (1 endpoint POST /api/auth/login):
---   Input: { login_id, password }
---   1. Query users theo login_id
---      → lấy id, password_hash, role, full_name, email (1 query, không JOIN)
---   2. Verify BCrypt(password, password_hash)
---   3. Tạo JWT { user_id, role } → trả về client
---
+--    Input: { login_id, password }
+--    1. Query users theo login_id
+--       -> lấy id, password, role, full_name, email (1 query, không JOIN)
+--    2. So sánh password người dùng nhập với password trong database
+--       -> input_password = users.password
+--    3. Nếu đúng mật khẩu -> tạo JWT { user_id, role } -> trả về client
+--       Nếu sai mật khẩu -> trả về lỗi đăng nhập
+
 -- JwtFilter (chạy trước mọi request):
---   - /api/admin/**    → role IN ('SUPER_ADMIN', 'MANAGER', 'STAFF')
---   - /api/customer/** → role = 'CUSTOMER'
---   - Sai role → 403 Forbidden ngay lập tức (không query DB)
+--    /api/admin/**     -> role IN ('SUPER_ADMIN', 'MANAGER', 'STAFF')
+--    /api/customer/**  -> role = 'CUSTOMER'
+--    Sai role          -> 403 Forbidden ngay lập tức (không query DB)
 -- ============================================================
 
 PRINT '============================================================';
-PRINT ' AutoWashPro v4.0 ready.';
+PRINT ' AutoWashPro ready.';
 PRINT ' 12 tables | 6 indexes | 4 tiers | 3 users | 5 services';
-PRINT ' Cach C: admins + customers → 1 bang users';
 PRINT '============================================================';
 GO
