@@ -323,7 +323,6 @@ GO
 INSERT INTO users (login_id, password, role, full_name, email)
 VALUES
     ('superadmin', '123456', 'SUPER_ADMIN', N'System Administrator', NULL),
-    ('manager01', '123456', 'MANAGER', N'Nguyễn Văn Quản Lý', NULL),
     ('0901234567', '123456', 'CUSTOMER', N'Trần Thị Khách Hàng', 'khachhang@email.com');
 
 -- Dịch vụ mẫu
