@@ -294,7 +294,7 @@
 
                     Already have an account?
 
-                    <a href="login.jsp">
+                    <a href="login_page.jsp">
                         Login
                     </a>
 

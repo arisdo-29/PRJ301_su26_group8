@@ -21,9 +21,9 @@
 
         <% if(user == null){ %>
 
-            <a href="Home.jsp">Home</a>
-            <a href="login.jsp">Login</a>
-            <a href="register.jsp">Register</a>
+            <a href="index.jsp">Home</a>
+            <a href="login_page.jsp">Login</a>
+            <a href="register_page.jsp">Register</a>
 
         <% } else if("ADMIN".equals(user.getRole())) { %>
 
@@ -33,7 +33,7 @@
 
         <% } else { %>
 
-            <a href="Home.jsp">Home</a>
+            <a href="index.jsp">Home</a>
             <a href="booking">Booking</a>
             <a href="myVehicles">My Vehicles</a>
             <a href="profile">Profile</a>

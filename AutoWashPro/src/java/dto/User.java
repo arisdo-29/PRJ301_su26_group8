@@ -4,51 +4,47 @@ package dto;
 import java.sql.Date;
 
 
-
 public class User {
-    private int userID;
-    private String fullname;
-//    private String login_id; //phone or username -> phat trien them
+    private int id;
+    private String loginId;
     private String password;
-//    private String role;
+    private String role;
+    private String fullName;
     private String email;
     private boolean isActive;
     private Date createAt;
+    
+    // ctors
 
     public User() {
     }
 
-    public User(int userID, String fullname, String password, String email, boolean isActive, Date createAt) {
-        this.userID = userID;
-        this.fullname = fullname;
+    public User(int id, String loginId, String password, String role, String fullName, String email, boolean isActive, Date createAt) {
+        this.id = id;
+        this.loginId = loginId;
         this.password = password;
+        this.role = role;
+        this.fullName = fullName;
         this.email = email;
         this.isActive = isActive;
         this.createAt = createAt;
     }
+    // get & setter
 
-    public User(String fullname, String password, String email, boolean isActive, Date createAt) {
-        this.fullname = fullname;
-        this.password = password;
-        this.email = email;
-        this.isActive = isActive;
-        this.createAt = createAt;
+    public int getId() {
+        return id;
     }
 
-    public int getUserID() {
-        return userID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public String getLoginId() {
+        return loginId;
     }
 
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public String getPassword() {
@@ -57,6 +53,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -82,9 +94,8 @@ public class User {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+    
 
-    
-    
     
     
 }
