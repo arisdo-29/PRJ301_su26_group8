@@ -83,6 +83,7 @@ GO
 CREATE TABLE users (
     id            INT            NOT NULL IDENTITY(1,1) PRIMARY KEY,
     login_id      NVARCHAR(100)  NOT NULL UNIQUE,   -- phone hoặc username
+	phone_number  NVARCHAR(20)   NOT NULL UNIQUE,
     password      NVARCHAR(100)  NOT NULL,
     role          NVARCHAR(20)   NOT NULL DEFAULT 'CUSTOMER',
     full_name     NVARCHAR(100)  NOT NULL,
@@ -320,10 +321,14 @@ GO
 
 -- Admin: login bằng username
 -- Customer: login bằng số điện thoại
-INSERT INTO users (login_id, password, role, full_name, email)
+INSERT INTO users
+(login_id, phone_number, password, role, full_name, email)
 VALUES
-    ('superadmin', '123456', 'SUPER_ADMIN', N'System Administrator', NULL),
-    ('0901234567', '123456', 'CUSTOMER', N'Trần Thị Khách Hàng', 'khachhang@email.com');
+('superadmin', 'ADMIN001', '123456', 'SUPER_ADMIN',
+ N'System Administrator', NULL),
+
+('0901234567', '0901234567', '123456', 'CUSTOMER',
+ N'Trần Thị Khách Hàng', 'khachhang@email.com');
 
 -- Dịch vụ mẫu
 INSERT INTO services (name, description, price, duration_min)

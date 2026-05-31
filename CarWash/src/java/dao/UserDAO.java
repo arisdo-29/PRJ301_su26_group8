@@ -17,8 +17,8 @@ public class UserDAO {
             cn=DBUtils.getConnection();
             if(cn!=null){
                 // viet sql va run sql
-                String sql = "insert into dbo.users(login_id, password, full_name, email, is_active, created_at) \n" 
-                             + "values(?,?,?,?,?,?)";
+                String sql = "insert into dbo.users(login_id, password, full_name, email, phone_number, is_active, created_at) \n" 
+                             + "values(?,?,?,?,?,?,?)";
                 PreparedStatement st=cn.prepareStatement(sql);
                 
                 st.setString(1, u.getLoginId());
@@ -26,8 +26,9 @@ public class UserDAO {
                 
                 st.setString(3, u.getFullName());
                 st.setString(4, u.getEmail());
-                st.setBoolean(5, u.isIsActive());
-                st.setDate(6, u.getCreateAt());
+                st.setString(5, u.getPhoneName());
+                st.setBoolean(6, u.isIsActive());
+                st.setDate(7, u.getCreateAt());
                 
                 result = st.executeUpdate();
             }
@@ -49,7 +50,7 @@ public class UserDAO {
         try{
             cn=DBUtils.getConnection();
             if(cn!=null){
-                String sql="select [id], [login_id], [password], [role], [full_name], [email], [is_active], [created_at]\n" +
+                String sql="select [id], [login_id], [password], [role], [full_name], [email], [phone_number], [is_active], [created_at]\n" +
                             "from [dbo].[users]\n" +
                             "where [email] =? and [password]  =?";
                 PreparedStatement st=cn.prepareStatement(sql);
@@ -64,9 +65,10 @@ public class UserDAO {
                         //String password = table.getString("password");
                         String role = table.getString("role");
                         String fullName = table.getString("full_name");
+                        String phoneName = table.getString("phone_number");
                         boolean isActive = table.getBoolean("is_active");
                         Date date = table.getDate("created_at");
-                        result=new User(uid, logid, "", role, fullName, email, isActive, date);
+                        result=new User(uid, logid, "", role, fullName, email, phoneName, isActive, date);
                     }
                 }
             }
@@ -85,7 +87,7 @@ public class UserDAO {
         try{
             cn=DBUtils.getConnection();
             if(cn!=null){
-                String sql = "select [id], [login_id], [password], [role], [full_name], [email], [is_active], [created_at]\n" 
+                String sql = "select [id], [login_id], [password], [role], [full_name], [email], [phone_number], [is_active], [created_at]\n" 
                                 + "from [dbo].[users]\n"
                                 + "where [email]=?";
                 //Tạo đối tượng chạy SQL.
@@ -99,9 +101,10 @@ public class UserDAO {
                         //String password = table.getString("password");
                         String role = table.getString("role");
                         String fullName = table.getString("full_name");
+                        String phoneName = table.getString("phone_number");
                         boolean isActive = table.getBoolean("is_active");
                         Date date = table.getDate("created_at");
-                        result=new User(uid, logid, "", role, fullName, email, isActive, date);
+                        result=new User(uid, logid, "", role, fullName, email, phoneName, isActive, date);
                     }
                 }
             }

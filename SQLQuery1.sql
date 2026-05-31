@@ -4,12 +4,13 @@ GO
 --------------------------------------------------
 -- USERS
 --------------------------------------------------
-INSERT INTO users (login_id,password,role,full_name,email)
+INSERT INTO users
+(login_id, phone_number, password, role, full_name, email)
 VALUES
-('0911111111','123456','CUSTOMER',N'Nguyễn Văn An','an@gmail.com'),
-('0922222222','123456','CUSTOMER',N'Trần Thị Bình','binh@gmail.com'),
-('0933333333','123456','CUSTOMER',N'Lê Minh Châu','chau@gmail.com'),
-('0944444444','123456','CUSTOMER',N'Phạm Quốc Dũng','dung@gmail.com');
+('0911111111', '0911111111', '123456', 'CUSTOMER', N'Nguyễn Văn An', 'an@gmail.com'),
+('0922222222', '0922222222', '123456', 'CUSTOMER', N'Trần Thị Bình', 'binh@gmail.com'),
+('0933333333', '0933333333', '123456', 'CUSTOMER', N'Lê Minh Châu', 'chau@gmail.com'),
+('0944444444', '0944444444', '123456', 'CUSTOMER', N'Phạm Quốc Dũng', 'dung@gmail.com');
 
 --------------------------------------------------
 -- VEHICLES

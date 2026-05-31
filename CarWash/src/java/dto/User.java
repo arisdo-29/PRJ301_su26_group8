@@ -11,6 +11,7 @@ public class User {
     private String role;
     private String fullName;
     private String email;
+    private String phoneName;
     private boolean isActive;
     private Date createAt;
     
@@ -26,6 +27,18 @@ public class User {
         this.role = role;
         this.fullName = fullName;
         this.email = email;
+        this.isActive = isActive;
+        this.createAt = createAt;
+    }
+
+    public User(int id, String loginId, String password, String role, String fullName, String email, String phoneName, boolean isActive, Date createAt) {
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+        this.role = role;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneName = phoneName;
         this.isActive = isActive;
         this.createAt = createAt;
     }
@@ -81,6 +94,23 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneName() {
+        return phoneName;
+    }
+
+    public void setPhoneName(String phoneName) {
+        this.phoneName = phoneName;
+    }
+
+    // Backwards-compatible accessors
+    public String getPhoneNumber() {
+        return this.phoneName;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneName = phoneNumber;
     }
 
     public boolean isIsActive() {
