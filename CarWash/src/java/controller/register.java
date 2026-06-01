@@ -47,6 +47,7 @@ public class register extends HttpServlet {
         String fullName = request.getParameter("txtfullName");
         String email = request.getParameter("txtemail");
         String password = request.getParameter("txtpassword");
+        String phone    = request.getParameter("txtphone");
         
         UserDAO d=new UserDAO();
         User u = new User();
@@ -55,6 +56,7 @@ public class register extends HttpServlet {
         u.setEmail(email);
         u.setLoginId(email);
         u.setPassword(password);
+        u.setPhoneName(phone);
         u.setIsActive(true);
         Date createDate = new Date(System.currentTimeMillis());
         u.setCreateAt(createDate);

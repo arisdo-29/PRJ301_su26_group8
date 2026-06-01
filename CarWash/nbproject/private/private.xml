@@ -13,12 +13,10 @@
             <file>file:/C:/Users/ASUS/Downloads/CarWash%20(2)/CarWash/src/java/dao/UserDAO.java</file>
         </group>
         <group name="foruser_code">
-            <file>file:/F:/da_fix/fix_v/CarWash/web/register_page.jsp</file>
-            <file>file:/F:/da_fix/fix_v/CarWash/web/MemberDashboard_page.jsp</file>
-            <file>file:/F:/da_fix/fix_v/CarWash/src/java/controller/register.java</file>
-            <file>file:/F:/da_fix/fix_v/CarWash/web/navbar.jsp</file>
-            <file>file:/F:/da_fix/fix_v/CarWash/web/editprofile.jsp</file>
-            <file>file:/F:/da_fix/fix_v/CarWash/web/index.jsp</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/web/register_page.jsp</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/controller/SaveProfile.java</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/dao/UserDAO.java</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/controller/register.java</file>
         </group>
     </open-files>
 </project-private>
