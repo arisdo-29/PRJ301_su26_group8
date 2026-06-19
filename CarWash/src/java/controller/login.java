@@ -26,7 +26,7 @@ public class login extends HttpServlet {
             User rs = u.getUser(email, password);
             
             if(rs==null){
-                String msg ="Email or password is invalid";
+                String msg ="Email hoặc mật khẩu nhập sai!";
                 //save msg vao request de dung no trong trang login_page.jsp
                 request.setAttribute("ERROR",msg);
                 //response.sendRedirect("login_page.jsp");
@@ -39,9 +39,14 @@ public class login extends HttpServlet {
                    // data nay trong nhieu chuc nang tiep theo
                    request.getSession().setAttribute("USER", rs);
                    //mo file 
-                   response.sendRedirect("MemberDashboard_page.jsp");// chuyen vao trang home sau dang nhap
+                   if("ADMIN".equalsIgnoreCase(rs.getRole())){
+                         response.sendRedirect("admin_page.jsp");
+                     }else{
+
+                         response.sendRedirect("HomeMember_page.jsp");
+                     }
                 }else{
-                   response.getWriter().print("access deny!!!!");
+                   response.getWriter().print("Từ chối truy cập!");
                 }
             }
         } catch (Exception e) {

@@ -126,12 +126,12 @@
     AutoWash Pro
   </a>
   <div class="navbar-links">
-    <a href="#hero">Home</a>
-    <a href="#services">Services</a>
+    <a href="#hero">Trang chủ</a>
+    <a href="#services">Dịch vụ</a>
   </div>
   <div class="navbar-actions">
-    <a href="login_page.jsp"><button class="btn-outline-white">Login</button></a>
-    <a href="register_page.jsp"><button class="btn-white">Register</button></a>
+    <a href="login_page.jsp"><button class="btn-outline-white">Đăng nhập</button></a>
+    <a href="register_page.jsp"><button class="btn-white">Đăng ký</button></a>
   </div>
 </nav>
 

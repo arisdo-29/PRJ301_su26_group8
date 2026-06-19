@@ -107,29 +107,29 @@
         <div class="page-body" id="login">
 
             <div class="icon-box">&#128167;</div>
-            <h2>Welcome Back</h2>
-            <p class="subtitle">Sign in to your AutoWash Pro account</p>
+            <h2>Chào mừng quay trở lại!</h2>
+            <p class="subtitle">Đăng nhập vào tài khoản AutoWash Pro của bạn!</p>
 
             <div class="card">
                 <form action="login" method="post">
 
                     <div class="form-group">
-                        <label>Your email</label>
-                        <input type="text" name="txtemail" placeholder="abc@gmail.com" required="">
+                        <label>Email</label>
+                        <input type="text" name="txtemail" placeholder="Nhập email" required="">
                     </div>
 
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" name="txtpassword" placeholder="Enter your password" required="">
+                        <label>Mật khẩu</label>
+                        <input type="password" name="txtpassword" placeholder="Nhập mật khẩu" required="">
                     </div>
 
                     <div class="divider"></div>
 
-                    <button type="submit" class="btn" value="login">Sign In</button>
+                    <button type="submit" class="btn" value="login">Đăng nhập</button>
                 </form>
             </div>
 
-            <p class="link-row">Don't have an account? <a href="register_page.jsp">Create one free</a></p>
+            <p class="link-row">Bạn chưa có tài khoản?<a href="register_page.jsp">Tạo tài khoản miễn phí!</a></p>
             <p class="msg"><%
             String msg = (String) request.getAttribute("ERROR");
             if (msg != null)
@@ -137,10 +137,6 @@
             %></p>
 
         </div>
-
-
-
-        
-        
+      
     </body>
 </html>

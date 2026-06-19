@@ -2,8 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/84947/OneDrive/Desktop/PRJ/AutoWarh/CarWash/src/java/dao/UserDAO.java</file>
+        <group name="foruser_code">
+            <file>file:/F:/PRJ301_su26_group8/CarWash/web/register_page.jsp</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/controller/SaveProfile.java</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/dao/UserDAO.java</file>
+            <file>file:/F:/PRJ301_su26_group8/CarWash/src/java/controller/register.java</file>
         </group>
+        <group/>
     </open-files>
 </project-private>

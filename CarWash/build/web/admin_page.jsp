@@ -94,8 +94,8 @@
         <div>
             <span>Welcome, <%= user.getFullName() %></span>
 
-            <a href="Home.jsp">Home</a>
-            <a href="LogoutServlet">Logout</a>
+            <a href="admin_page.jsp">Home</a>
+            <a href="logout">Logout</a>
         </div>
     </div>
 

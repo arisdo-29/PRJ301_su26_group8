@@ -17,11 +17,12 @@
       <a href="index.jsp" style="color:white;text-decoration:none;font-weight:600;">Trang chủ</a>
       <a href="login_page.jsp" style="color:white;text-decoration:none;font-weight:600;">Đăng nhập</a>
       <a href="register_page.jsp" style="background:white;color:#2979C8;padding:6px 18px;border-radius:50px;font-weight:700;text-decoration:none;">Đăng ký</a>
-    <% } else if ("admin".equalsIgnoreCase(navbarUser.getRole())) { %>
+    <% } else if ("ADMIN".equalsIgnoreCase(navbarUser.getRole())) { %>
       <a href="dashboard" style="color:white;text-decoration:none;font-weight:600;">Dashboard</a>
       <a href="logout" style="color:white;text-decoration:none;font-weight:600;">Đăng xuất</a>
     <% } else { %>
-      <a href="MemberDashboard_page.jsp" style="color:white;text-decoration:none;font-weight:600;">Trang chủ</a>
+      <a href="HomeMember_page.jsp" style="color:white;text-decoration:none;font-weight:600;">Trang chủ</a>
+      <a href="EditProfile" style="color:white;text-decoration:none;font-weight:600;">Chỉnh sửa hồ sơ</a>
       <a href="getcars" style="color:white;text-decoration:none;font-weight:600;">Xe của tôi</a>
       <a href="my-points" style="color:white;text-decoration:none;font-weight:600;">Điểm thưởng</a>
       <a href="logout" style="background:rgba(255,255,255,0.2);color:white;padding:6px 18px;border-radius:50px;font-weight:700;text-decoration:none;">Đăng xuất</a>

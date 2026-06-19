@@ -23,10 +23,7 @@ public class register extends HttpServlet {
 
         try {
             PrintWriter out = response.getWriter();
-            out.print("<html>");
-            out.print("<body>");
-            out.print("</body>");
-            out.print("</html>");
+            request.getRequestDispatcher("register_page.jsp").forward(request, response);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -50,6 +47,7 @@ public class register extends HttpServlet {
         String fullName = request.getParameter("txtfullName");
         String email = request.getParameter("txtemail");
         String password = request.getParameter("txtpassword");
+        String phone    = request.getParameter("txtphone");
         
         UserDAO d=new UserDAO();
         User u = new User();
@@ -58,6 +56,7 @@ public class register extends HttpServlet {
         u.setEmail(email);
         u.setLoginId(email);
         u.setPassword(password);
+        u.setPhoneName(phone);
         u.setIsActive(true);
         Date createDate = new Date(System.currentTimeMillis());
         u.setCreateAt(createDate);
@@ -66,6 +65,11 @@ public class register extends HttpServlet {
         if(found==null){
             int rs=d.createNewUser(u);
             if(rs>=1){
+                
+                User newUser = d.getUser(email);
+                if (newUser != null) {
+                d.createLoyaltyAccount(newUser.getId());
+            }
                 //chen tcong
                 //mo lai file index.jsp de login
                 response.sendRedirect("index.jsp");
@@ -80,7 +84,7 @@ public class register extends HttpServlet {
             // save msg vao request 
             request.setAttribute("ERROR", msg);
              // mo trang register_page.jsp de xuat msg
-             response.sendRedirect("register_page.jsp");
+             //response.sendRedirect("register_page.jsp");
              request.getRequestDispatcher("register_page.jsp").forward(request, response);
         }
     }

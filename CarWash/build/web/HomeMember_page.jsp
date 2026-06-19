@@ -24,7 +24,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 3rem; height: 68px;
     }
-    .navbar-brand { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 800; color: var(--white); }
+    .navbar-brand { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 900; color: var(--white); }
     .brand-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
     .navbar-links { display: flex; align-items: center; gap: 2rem; }
     .navbar-links a { color: var(--white); font-weight: 600; font-size: 0.95rem; opacity: 0.9; transition: opacity .2s; }
@@ -35,6 +35,7 @@
     .btn-white { padding: 0.45rem 1.3rem; border: 2px solid var(--white); border-radius: 50px; color: var(--blue); font-weight: 700; font-size: 0.9rem; background: var(--white); cursor: pointer; }
 
     /* HERO */
+    .welcome { font-size:30px; font-weight:700; color:#EEEEEE; margin-bottom:6px; }
     .hero { background: var(--blue); min-height: calc(100vh - 68px); display: flex; align-items: center; padding: 3rem; position: relative; overflow: hidden; }
     .hero-content { flex: 1; max-width: 560px; z-index: 2; }
     .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); padding: 6px 14px; border-radius: 50px; color: var(--white); font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
@@ -109,29 +110,26 @@
   </style>
 </head>
 <body>
-
-<%
-    // Nếu user đã login thì redirect thẳng vào dashboard
-    User loggedIn = (User) session.getAttribute("USER");
-    if (loggedIn != null) {
-        response.sendRedirect(request.getContextPath() + "/dashboard");
+    <%
+    User currentUser = (User) session.getAttribute("USER");
+    if (currentUser == null) {
+        response.sendRedirect("index.jsp");
         return;
     }
 %>
-
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="index.jsp" class="navbar-brand">
+  <a href="HomeMember_page.jsp" class="navbar-brand">
     <div class="brand-icon">💧</div>
     AutoWash Pro
   </a>
   <div class="navbar-links">
     <a href="#hero">Trang chủ</a>
     <a href="#services">Dịch vụ</a>
+    <a href="dashboard">Tài khoản của tôi</a>
   </div>
   <div class="navbar-actions">
-    <a href="login_page.jsp"><button class="btn-outline-white">Đăng nhập</button></a>
-    <a href="register_page.jsp"><button class="btn-white">Đăng ký</button></a>
+    <a href="logout"><button class="btn-outline-white">Đăng xuất</button></a>
   </div>
 </nav>
 
@@ -143,6 +141,9 @@
   <div class="drop" style="width:14px;height:18px;top:18%;left:85%;animation-delay:1.1s"></div>
 
   <div class="hero-content">
+    <div class="welcome">
+    Xin chào, <%= currentUser.getFullName() %>!
+  </div>
     <div class="hero-badge">⭐ Dịch vụ rửa xe chuyên nghiệp &nbsp;·&nbsp; 4.9★</div>
     <h1>Smart Car Wash,<br>Anytime.</h1>
     <p>Đặt lịch rửa xe online, tích điểm thành viên, nhận ưu đãi hấp dẫn mỗi ngày.</p>
