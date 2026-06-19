@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/src/java/dao/VehicleDao.java</file>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/src/java/controller/Addcar.java</file>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/src/java/controller/register.java</file>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/src/java/dto/Vehicle.java</file>
+            <file>file:/C:/Users/84947/Downloads/CarWash/CarWash/web/register_page.jsp</file>
+        </group>
+        <group name="foruser_code">
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/dto/Vehicle.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/Addcar.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/logout.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/getcars.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/deletecar.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/dao/VehicleDao.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/savecar.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/web/login_page.jsp</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/ViewPoints.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/web/editcar.jsp</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/ViewCars.java</file>
+            <file>file:/F:/Prj301_Group8_Project/ws1_4/CarWash/CarWash/CarWash/src/java/controller/login.java</file>
+        </group>
+    </open-files>
+</project-private>
