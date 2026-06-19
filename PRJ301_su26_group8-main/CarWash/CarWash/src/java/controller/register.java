@@ -76,10 +76,10 @@ public class register extends HttpServlet {
                 vd.addCar(
                     newUser.getId(),
                     licensePlate,
-                    brand,
-                    "",
-                    "",
-                    ""
+                    "",           // type (để trống)
+                    brand,        // brand - đúng vị trí
+                    "",           // model
+                    ""            // color
                 );
             }
                 response.sendRedirect("index.jsp");
