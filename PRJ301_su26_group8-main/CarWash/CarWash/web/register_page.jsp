@@ -261,33 +261,26 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Hãng xe</label>
 
-                            <label>Loại xe</label>
+                            <select name="txtBrand">
+                                <option value="">Chọn hãng xe</option>
 
-                            <select name="txtType">
-
-                                <option value="">
-                                    Chọn loại xe
-                                </option>
-
-                                <option value="Motorbike">
-                                    Xe máy
-                                </option>
-
-                                <option value="Car">
-                                    Xe hơi
-                                </option>
-
-                                <option value="SUV">
-                                    SUV
-                                </option>
-
-                                <option value="Truck">
-                                    Xe tải
-                                </option>
-
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Mitsubishi">Mitsubishi</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Lexus">Lexus</option>
+                                <option value="VinFast">VinFast</option>
+                                <option value="Tesla">Tesla</option>
                             </select>
-
                         </div>
 
                         <button class="btn" type="submit">

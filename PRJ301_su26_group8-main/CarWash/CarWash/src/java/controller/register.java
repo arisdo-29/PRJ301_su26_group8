@@ -48,7 +48,7 @@ public class register extends HttpServlet {
         String password = request.getParameter("txtpassword");
         String phone    = request.getParameter("txtphone");
         String licensePlate = request.getParameter("txtlicensePlate");
-        String type = request.getParameter("txtType");
+        String brand = request.getParameter("txtBrand");
         
         UserDAO d=new UserDAO();
         User u = new User();
@@ -76,7 +76,7 @@ public class register extends HttpServlet {
                 vd.addCar(
                     newUser.getId(),
                     licensePlate,
-                    type,
+                    brand,
                     "",
                     "",
                     ""
