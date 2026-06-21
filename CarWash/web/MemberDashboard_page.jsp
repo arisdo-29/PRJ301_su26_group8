@@ -248,7 +248,10 @@
         <a href="logout" class="btn btn-outline">
             🚪 Đăng xuất
         </a>
-
+        
+        <a href="washhistory" class="btn btn-outline">
+                    🚪 Xem lịch sử rửa xe
+                </a>
     </div>
 
 </div>

@@ -46,6 +46,7 @@
       <a href="EditProfile"         style="color:white;text-decoration:none;font-weight:600;">Hồ sơ</a>
       <a href="getcars"             style="color:white;text-decoration:none;font-weight:600;">Xe của tôi</a>
       <a href="my-points"           style="color:white;text-decoration:none;font-weight:600;">Điểm thưởng</a>
+      <a href="washhistory"           style="color:white;text-decoration:none;font-weight:600;">Lịch sử rửa xe</a>
       <a href="logout" style="background:rgba(255,255,255,0.2);color:white;padding:6px 18px;border-radius:50px;font-weight:700;text-decoration:none;">Đăng xuất</a>
     <% } %>
   </div>
