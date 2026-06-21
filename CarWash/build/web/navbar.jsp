@@ -19,7 +19,14 @@
 <% } %>
 
 <nav style="background:#2979C8;padding:0 2rem;height:56px;display:flex;align-items:center;justify-content:space-between;">
-  <a href="index.jsp" style="color:white;font-weight:800;font-size:1.1rem;text-decoration:none;">💧 AutoWash Pro</a>
+  <% String brandLink = "index.jsp";
+     if (navbarUser != null) {
+         brandLink = "CUSTOMER".equalsIgnoreCase(navbarUser.getRole())
+                     ? "HomeMember_page.jsp"
+                     : "adminDashboard";
+     }
+  %>
+  <a href="<%= brandLink %>" style="color:white;font-weight:800;font-size:1.1rem;text-decoration:none;">💧 AutoWash Pro</a>
   <div style="display:flex;gap:1.5rem;align-items:center;">
     <% if (navbarUser == null) { %>
       <a href="index.jsp"         style="color:white;text-decoration:none;font-weight:600;">Trang chủ</a>
@@ -28,9 +35,7 @@
 
     <% } else if (!"CUSTOMER".equalsIgnoreCase(navbarUser.getRole())) { %>
       <%-- Menu cho ADMIN / MANAGER / STAFF --%>
-      <a href="admin_page.jsp" style="color:white;text-decoration:none;font-weight:600;">Dashboard</a>
-
-      <%-- ĐÃ SỬA: đổi href từ "admin_page.jsp" sang "manageReward" (servlet mới) --%>
+      <a href="adminDashboard" style="color:white;text-decoration:none;font-weight:600;">Dashboard</a>
       <a href="manageReward"   style="color:white;text-decoration:none;font-weight:600;">Phần thưởng & KM</a>
 
       <a href="logout"         style="color:white;text-decoration:none;font-weight:600;">Đăng xuất</a>

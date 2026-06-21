@@ -113,7 +113,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', Arial, sans-serif; background: #f4f6f9; }
 
-        .container { max-width: 1200px; margin: 30px auto; padding: 0 16px 60px; }
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 18px 60px; }
 
         .toast-ok  { background: #ECFDF5; border: 1px solid #6EE7B7; color: #065F46;
                      padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; }
@@ -144,15 +144,17 @@
         .btn-add:hover { background: #1B5FA3; }
 
         /* Bang du lieu - cho phep cuon ngang tren man hinh nho thay vi vo layout */
-        .table-scroll { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 1050px; }
+        .table-scroll { overflow-x: auto; margin: 0 -18px; padding: 0 18px; }
+        table { width: 100%; border-collapse: collapse; table-layout: auto; }
         thead th {
             background: #2979C8; color: white;
             padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700;
-            white-space: nowrap;
+            white-space: normal;
         }
         tbody td { padding: 12px 16px; border-bottom: 1px solid #EEF4FB;
-                   font-size: 14px; color: #1A2B3C; }
+                   font-size: 14px; color: #1A2B3C; white-space: normal;
+                   overflow-wrap: break-word; word-wrap: break-word; }
+        .col-description { max-width: 320px; min-width: 200px; }
         tbody tr:last-child td { border-bottom: none; }
         tbody tr:hover { background: #F7FBFF; }
 
@@ -178,6 +180,25 @@
         .btn-edit:hover   { background: #FDE68A; }
         .btn-delete { background: #FEE2E2; color: #991B1B; }
         .btn-delete:hover { background: #FECACA; }
+
+        /* Modal confirm tạm dừng */
+        .modal-backdrop {
+            position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+            background: rgba(15, 23, 42, 0.35); z-index: 1000;
+        }
+        .modal-card {
+            width: min(520px, calc(100% - 32px)); background: white; border-radius: 18px;
+            padding: 24px; box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18); line-height: 1.6;
+        }
+        .modal-card h3 { margin-bottom: 12px; font-size: 18px; color: #111827; }
+        .modal-card p { margin-bottom: 20px; color: #4B5563; font-size: 14px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 12px; }
+        .btn-modal-cancel, .btn-modal-confirm {
+            border: none; border-radius: 999px; padding: 10px 18px; font-weight: 700;
+            cursor: pointer; font-family: inherit;
+        }
+        .btn-modal-cancel { background: #F3F4F6; color: #111827; }
+        .btn-modal-confirm { background: #DC2626; color: white; }
     </style>
 </head>
 <body>
@@ -211,7 +232,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tên phần thưởng</th>
-                    <th>Mô tả</th>
+                    <th class="col-description">Mô tả</th>
                     <th>Loại</th>
                     <th>Điểm đổi</th>
                     <th>Giá trị</th>
@@ -232,7 +253,7 @@
                         <tr>
                             <td>${status.count}</td>
                             <td><strong>${r.name}</strong></td>
-                            <td>${not empty r.description ? r.description : "-"}</td>
+                            <td class="col-description">${not empty r.description ? r.description : "-"}</td>
                             <td><%= getTypeName(((Reward) pageContext.getAttribute("r")).getType()) %></td>
                             <td><strong style="color:#2979C8;">${r.pointsCost} điểm</strong></td>
                             <td><%= getValueDisplay(((Reward) pageContext.getAttribute("r")).getType(),
@@ -252,8 +273,8 @@
                             </td>
                             <td class="col-actions">
                                 <a href="editReward?id=${r.id}" class="btn-action btn-edit">✏️ Sửa</a>
-                                <a href="deleteReward?id=${r.id}" class="btn-action btn-delete"
-                                   onclick="return confirm('Xác nhận xóa phần thưởng \'${r.name}\'? Sau khi xóa, mục này sẽ ngừng hiển thị nhưng lịch sử đổi thưởng vẫn được giữ lại.');">🗑️ Xóa</a>
+                                <a href="#" class="btn-action btn-delete"
+                                   onclick="confirmPause('phần thưởng', '${r.name}', 'deleteReward?id=${r.id}'); return false;">⏸️ Tạm dừng</a>
                             </td>
                         </tr>
                         </c:forEach>
@@ -280,7 +301,7 @@
                 <tr>
                     <th>#</th>
                     <th>Tên khuyến mãi</th>
-                    <th>Mô tả</th>
+                    <th class="col-description">Mô tả</th>
                     <th>Loại</th>
                     <th>Giá trị ưu đãi</th>
                     <th>Hạng áp dụng</th>
@@ -300,7 +321,7 @@
                         <tr>
                             <td>${status.count}</td>
                             <td><strong>${p.name}</strong></td>
-                            <td>${not empty p.description ? p.description : "-"}</td>
+                            <td class="col-description">${not empty p.description ? p.description : "-"}</td>
                             <td><%= getTypeName(((Reward) pageContext.getAttribute("p")).getType()) %></td>
                             <td><strong style="color:#059669;"><%= getValueDisplay(((Reward) pageContext.getAttribute("p")).getType(),
                                                      ((Reward) pageContext.getAttribute("p")).getValue()) %></strong></td>
@@ -319,8 +340,8 @@
                             </td>
                             <td class="col-actions">
                                 <a href="editReward?id=${p.id}" class="btn-action btn-edit">✏️ Sửa</a>
-                                <a href="deleteReward?id=${p.id}" class="btn-action btn-delete"
-                                   onclick="return confirm('Xác nhận xóa khuyến mãi \'${p.name}\'? Sau khi xóa, mục này sẽ ngừng hiển thị nhưng dữ liệu liên quan vẫn được giữ lại.');">🗑️ Xóa</a>
+                                <a href="#" class="btn-action btn-delete"
+                                   onclick="confirmPause('khuyến mãi', '${p.name}', 'deleteReward?id=${p.id}'); return false;">⏸️ Tạm dừng</a>
                             </td>
                         </tr>
                         </c:forEach>
@@ -331,10 +352,41 @@
         </div>
     </div>
 
-    <a href="admin_page.jsp" style="color:#2979C8; font-weight:600; font-size:14px; text-decoration:none;">
+    <a href="adminDashboard" style="color:#2979C8; font-weight:600; font-size:14px; text-decoration:none;">
         ← Về trang Admin Dashboard
     </a>
 
 </div>
+
+<div class="modal-backdrop" id="pause-modal">
+    <div class="modal-card">
+        <h3 id="pause-modal-title">Xác nhận tạm dừng</h3>
+        <p id="pause-modal-text">Xác nhận tạm dừng mục này? Sau khi tạm dừng, mục này sẽ ngừng hiển thị nhưng dữ liệu liên quan vẫn được giữ lại.</p>
+        <div class="modal-actions">
+            <button type="button" class="btn-modal-cancel" onclick="closePauseModal()">Hủy</button>
+            <button type="button" class="btn-modal-confirm" onclick="doPause()">Tạm dừng</button>
+        </div>
+        <input type="hidden" id="pause-confirm-url" value="">
+    </div>
+</div>
+
+<script>
+    function confirmPause(kind, name, url) {
+        document.getElementById('pause-modal-title').textContent = 'Xác nhận tạm dừng ' + kind;
+        document.getElementById('pause-modal-text').textContent =
+            'Xác nhận tạm dừng ' + kind + ' "' + name + '"? Sau khi tạm dừng, mục này sẽ ngừng hiển thị nhưng dữ liệu liên quan vẫn được giữ lại.';
+        document.getElementById('pause-confirm-url').value = url;
+        document.getElementById('pause-modal').style.display = 'flex';
+    }
+    function closePauseModal() {
+        document.getElementById('pause-modal').style.display = 'none';
+    }
+    function doPause() {
+        var url = document.getElementById('pause-confirm-url').value;
+        if (url) {
+            window.location.href = url;
+        }
+    }
+</script>
 </body>
 </html>
