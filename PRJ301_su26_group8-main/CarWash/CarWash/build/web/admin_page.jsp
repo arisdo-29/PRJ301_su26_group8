@@ -83,17 +83,8 @@
 </head>
 
 <body>
-
-    <div class="navbar">
-        <h2>AutoWash Pro - Admin</h2>
-
-        <div>
-            <span>Welcome, <%= user.getFullName() %></span>
-
-            <a href="index.jsp">Home</a>
-            <a href="logout">Logout</a>
-        </div>
-    </div>
+<jsp:include page="navbar.jsp"/>
+    
 
     <div class="container">
 
@@ -106,39 +97,19 @@
 
             <div class="card">
                 <h2>Users</h2>
-                <p>Manage user accounts</p>
+                <p>Manage user redeem</p>
                 <a href="UserManagementServlet">View</a>
             </div>
 
             <div class="card">
-                <h2>Customers</h2>
-                <p>Manage customer information</p>
-                <a href="CustomerManagementServlet">View</a>
-            </div>
-
-            <div class="card">
-                <h2>Services</h2>
-                <p>Manage wash services</p>
-                <a href="ServiceManagementServlet">View</a>
-            </div>
-
-            <div class="card">
-                <h2>Promotions</h2>
-                <p>Manage promotions</p>
+                <h2>Promotions and rewards</h2>
+                <p>Manage promotions and rewards</p>
                 <a href="PromotionManagementServlet">View</a>
             </div>
 
-            <div class="card">
-                <h2>Bookings</h2>
-                <p>Manage bookings</p>
-                <a href="BookingManagementServlet">View</a>
-            </div>
+            
 
-            <div class="card">
-                <h2>Reports</h2>
-                <p>View system reports</p>
-                <a href="ReportServlet">View</a>
-            </div>
+            
 
         </div>
 
